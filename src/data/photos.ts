@@ -21,11 +21,132 @@ export interface Photo {
   exif: PhotoExif;
   position?: string;
   aspectRatio?: string;
+  src?: string;
+  imageKey?: string;
+  alt?: string;
+  credit?: string;
+  sourceUrl?: string;
 }
 
 export const photos: Photo[] = [
   {
+    id: "kyoto-aerial-palace",
+    src: "/photos/kyoto-aerial-palace.jpg",
+    title: "Palácio Imperial nas Alturas",
+    place: "Palácio Imperial de Quioto (Kyoto Gyoen)",
+    jp: "京都御所",
+    tags: ["Quioto", "Aéreas", "Arquitetura", "Natureza"],
+    description: "Uma perspectiva aérea do Palácio Imperial e seus jardins históricos cercados pela malha urbana milenar de Quioto.",
+    story: "Sobrevoando o coração de Quioto ao amanhecer, o verde profundo do parque Kyoto Gyoen ergue-se como um refúgio imperial em contraste com o desenho geométrico das ruas milenares concebidas na era Heian. Cada pavilhão histórico preserva séculos de tradição cercado pelo silêncio das copas das árvores.",
+    position: "50% 50%",
+    aspectRatio: "1.78",
+    exif: {
+      camera: "DJI Inspire 3 / Zenmuse X9-8K Air",
+      lens: "DL 35mm F2.8 LS ASPH",
+      aperture: "f/5.6",
+      shutter: "1/800s",
+      iso: "100",
+      focalLength: "35mm",
+      locationExact: "Kyoto Gyoen National Garden, Kamigyo-ku, Quioto",
+      coordinates: "35.0254° N, 135.7621° E",
+      year: "2026"
+    }
+  },
+  {
+    id: "kyoto-aerial-vista",
+    src: "/photos/kyoto-aerial-vista.jpg",
+    title: "Quioto e as Montanhas do Leste",
+    place: "Bacia de Quioto & Higashiyama",
+    jp: "古都俯瞰",
+    tags: ["Quioto", "Aéreas", "Natureza", "Arquitetura"],
+    description: "A imensidão da antiga capital estende-se até os pés das colinas sagradas de Higashiyama em um dia de luz cristalina.",
+    story: "Em um sobrevoo em altitude elevada, a bacia natural de Quioto desdobra-se em sua totalidade. As montanhas que outrora serviam de proteção espiritual segundo as regras do feng shui Heian-kyō abraçam a cidade, onde telhados tradicionais se fundem com a modernidade japonesa.",
+    position: "50% 50%",
+    aspectRatio: "1.78",
+    exif: {
+      camera: "Hasselblad H6D-100c Aerial",
+      lens: "HC 3.5/50mm II",
+      aperture: "f/8.0",
+      shutter: "1/1000s",
+      iso: "64",
+      focalLength: "50mm",
+      locationExact: "Bacia Central de Quioto, Japão",
+      coordinates: "35.0116° N, 135.7681° E",
+      year: "2026"
+    }
+  },
+  {
+    id: "kyoto-aerial-castle",
+    src: "/photos/kyoto-aerial-castle.jpg",
+    title: "O Castelo de Nijo e a Cidade",
+    place: "Castelo de Nijo, Quioto",
+    jp: "二条城",
+    tags: ["Quioto", "Aéreas", "Arquitetura", "Templos"],
+    description: "As muralhas de pedra e os fossos d'água do Castelo de Nijo vistos do céu, testemunhas silenciosas da era dos Shoguns.",
+    story: "Construído por Tokugawa Ieyasu no início do século XVII, o Castelo de Nijo visto de cima revela seu engenhoso sistema defensivo de fossos concêntricos e muralhas de granito maciço. Ao redor, os bairros tradicionais de Quioto mantêm o ritmo sereno da cidade milenar sob a luz límpida da tarde.",
+    position: "50% 50%",
+    aspectRatio: "1.78",
+    exif: {
+      camera: "Sony α1 (Aero Mount)",
+      lens: "FE 24-70mm f/2.8 GM II",
+      aperture: "f/6.3",
+      shutter: "1/640s",
+      iso: "125",
+      focalLength: "40mm",
+      locationExact: "Castelo de Nijo, Nakagyo-ku, Quioto",
+      coordinates: "35.0142° N, 135.7482° E",
+      year: "2026"
+    }
+  },
+  {
+    id: "tokyo-shinjuku-night",
+    src: "/photos/tokyo-shinjuku-night.jpg",
+    title: "Constelação de Shinjuku",
+    place: "Shinjuku, Tóquio",
+    jp: "新宿夜景",
+    tags: ["Tóquio", "Noite", "Arquitetura", "Aéreas"],
+    description: "O edifício do Governo Metropolitano iluminado em azul profundo em meio ao mar infinito de luzes de Shinjuku.",
+    story: "A vista panorâmica noturna sobre o distrito de arranha-céus de Shinjuku. No centro da composição, as torres gêmeas do Tokyo Metropolitan Government Building brilham com iluminação cerúlea, enquanto avenidas pulsam com o tráfego veloz como veias elétricas da maior metrópole do planeta.",
+    position: "50% 50%",
+    aspectRatio: "1.78",
+    exif: {
+      camera: "Sony α7R V",
+      lens: "FE 16-35mm f/2.8 GM II",
+      aperture: "f/4.0",
+      shutter: "1.5s",
+      iso: "400",
+      focalLength: "20mm",
+      locationExact: "Distrito de Arranha-céus de Shinjuku, Tóquio",
+      coordinates: "35.6895° N, 139.6917° E",
+      year: "2026"
+    }
+  },
+  {
+    id: "tokyo-tower-night",
+    src: "/photos/tokyo-tower-night.jpg",
+    title: "Tóquio sob a Luz da Torre",
+    place: "Roppongi & Minato, Tóquio",
+    jp: "東京タワー",
+    tags: ["Tóquio", "Noite", "Arquitetura", "Aéreas"],
+    description: "A icônica Torre de Tóquio brilha em âmbar sobre a densa tapeçaria urbana da capital japonesa à noite.",
+    story: "Do alto de Roppongi Hills, a Torre de Tóquio destaca-se como farol e símbolo eterno do renascimento e da modernidade do Japão. Sua tonalidade alaranjada quente contrasta com o mar de luzes brancas e frias dos bairros adjacentes.",
+    position: "50% 50%",
+    aspectRatio: "1.78",
+    exif: {
+      camera: "Leica SL2-S",
+      lens: "Vario-Elmarit-SL 24-70mm f/2.8 ASPH",
+      aperture: "f/5.6",
+      shutter: "2.0s",
+      iso: "200",
+      focalLength: "35mm",
+      locationExact: "Minato-ku, Tóquio, Japão",
+      coordinates: "35.6586° N, 139.7454° E",
+      year: "2026"
+    }
+  },
+  {
     id: "kyoto",
+    src: "/photos/kyoto.png",
     title: "Um momento em Quioto",
     place: "Quioto, Japão",
     jp: "京都",
@@ -48,6 +169,7 @@ export const photos: Photo[] = [
   },
   {
     id: "fuji",
+    src: "/photos/fuji.png",
     title: "A forma do silêncio",
     place: "Monte Fuji, Japão",
     jp: "富士山",
@@ -60,7 +182,7 @@ export const photos: Photo[] = [
       camera: "Hasselblad X2D 100C",
       lens: "XCD 90mm f/2.5 V",
       aperture: "f/8.0",
-      shutter: "1/80s",
+      shutter: "1/800s",
       iso: "64",
       focalLength: "90mm",
       locationExact: "Margem norte do Lago Kawaguchi, Yamanashi",
@@ -70,6 +192,7 @@ export const photos: Photo[] = [
   },
   {
     id: "osaka",
+    src: "/photos/osaka.png",
     title: "Sob as lanternas",
     place: "Shinsekai, Osaka",
     jp: "大阪",
@@ -92,6 +215,7 @@ export const photos: Photo[] = [
   },
   {
     id: "autumn",
+    src: "/photos/autumn.png",
     title: "Uma estação em vermelhão",
     place: "Japão · paisagem de outono",
     jp: "秋",
@@ -114,6 +238,7 @@ export const photos: Photo[] = [
   },
   {
     id: "tokyo",
+    src: "/photos/tokyo.png",
     title: "Tóquio, no limiar do dia",
     place: "Tóquio, Japão",
     jp: "東京",
@@ -136,6 +261,7 @@ export const photos: Photo[] = [
   },
   {
     id: "onsen",
+    src: "/photos/onsen.png",
     title: "Onde o inverno exala",
     place: "Japão · paisagem de inverno",
     jp: "冬",
@@ -158,6 +284,7 @@ export const photos: Photo[] = [
   },
   {
     id: "dotonbori",
+    src: "/photos/dotonbori.png",
     title: "A vida ao longo do canal",
     place: "Dōtonbori, Osaka",
     jp: "大阪",
@@ -180,6 +307,7 @@ export const photos: Photo[] = [
   },
   {
     id: "bridge",
+    src: "/photos/bridge.png",
     title: "A luz entre as folhas",
     place: "Japão · paisagem fluvial",
     jp: "光",
@@ -202,6 +330,7 @@ export const photos: Photo[] = [
   },
   {
     id: "kobe",
+    src: "/photos/kobe.png",
     title: "O porto torna-se azul",
     place: "Kobe, Japão",
     jp: "神戸",
@@ -224,6 +353,7 @@ export const photos: Photo[] = [
   },
   {
     id: "spring",
+    src: "/photos/spring.png",
     title: "Um mundo de vapor nascente",
     place: "Japão · fontes termais",
     jp: "湯",
@@ -246,6 +376,7 @@ export const photos: Photo[] = [
   },
   {
     id: "snow",
+    src: "/photos/snow.png",
     title: "Acima da floresta branca",
     place: "Japão · paisagem montanhosa",
     jp: "山",
@@ -268,6 +399,7 @@ export const photos: Photo[] = [
   },
   {
     id: "sakura",
+    src: "/photos/sakura.png",
     title: "Ao longo das águas da primavera",
     place: "Japão · temporada das cerejeiras",
     jp: "桜",
@@ -290,11 +422,21 @@ export const photos: Photo[] = [
   }
 ];
 
+export function getPhotoSrc(target: string | Photo): string {
+  if (!target) return "";
+  if (typeof target === "object") {
+    return target.src || `/photos/${target.id}.png`;
+  }
+  const found = photos.find((p) => p.id === target);
+  return found?.src || `/photos/${target}.png`;
+}
+
 export const categories = [
   "Todas as fotografias",
-  "Tóquio",
   "Quioto",
+  "Tóquio",
   "Osaka",
+  "Aéreas",
   "Natureza",
   "Templos",
   "Noite",
@@ -311,10 +453,39 @@ export const navItems = [
 ];
 
 export const storySets = [
-  { title: "Quioto em Cores", eyebrow: "A tradição no cotidiano", ids: ["kyoto", "bridge", "spring"] },
-  { title: "As Horas de Néon", eyebrow: "Quando as cidades ganham vida", ids: ["tokyo", "osaka", "kobe", "dotonbori"] },
-  { title: "Montanhas do Japão", eyebrow: "Uma sensação diferente de escala", ids: ["snow", "fuji", "onsen"] },
-  { title: "Vapor & Silêncio", eyebrow: "Entre o inverno e o calor", ids: ["onsen", "spring", "snow"] },
-  { title: "Ruas de Lanternas", eyebrow: "Seguindo a luz do entardecer", ids: ["osaka", "dotonbori", "kyoto"] },
-  { title: "Uma Estação em Flor", eyebrow: "As cores que carregamos", ids: ["sakura", "fuji", "autumn"] }
+  {
+    title: "Quioto das Alturas",
+    eyebrow: "A antiga capital sob a luz do céu",
+    ids: ["kyoto-aerial-palace", "kyoto-aerial-vista", "kyoto-aerial-castle"]
+  },
+  {
+    title: "As Horas de Néon",
+    eyebrow: "Quando as cidades ganham vida",
+    ids: ["tokyo-shinjuku-night", "tokyo-tower-night", "tokyo", "osaka", "kobe", "dotonbori"]
+  },
+  {
+    title: "Quioto em Cores",
+    eyebrow: "A tradição no cotidiano",
+    ids: ["kyoto", "bridge", "spring"]
+  },
+  {
+    title: "Montanhas do Japão",
+    eyebrow: "Uma sensação diferente de escala",
+    ids: ["snow", "fuji", "onsen"]
+  },
+  {
+    title: "Vapor & Silêncio",
+    eyebrow: "Entre o inverno e o calor",
+    ids: ["onsen", "spring", "snow"]
+  },
+  {
+    title: "Ruas de Lanternas",
+    eyebrow: "Seguindo a luz do entardecer",
+    ids: ["osaka", "dotonbori", "kyoto"]
+  },
+  {
+    title: "Uma Estação em Flor",
+    eyebrow: "As cores que carregamos",
+    ids: ["sakura", "fuji", "autumn"]
+  }
 ];

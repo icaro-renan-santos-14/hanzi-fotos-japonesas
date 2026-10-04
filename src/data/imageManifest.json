@@ -1,0 +1,315 @@
+{
+  "akita-snow": {
+    "width": 3840,
+    "height": 2560,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920,
+      2560,
+      3840
+    ],
+    "placeholder": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAAAQBACdASogABUAPvlsrFCqpqSit/qoAVAfCWkAAEGSFBh7wGb/v0pEwAD+b0L3BAyA0abB+Phhmx1bUNSIsLnFM05v9RMxVZcAAA=="
+  },
+  "aomori-rail": {
+    "width": 3840,
+    "height": 5120,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920,
+      2560,
+      3840
+    ],
+    "placeholder": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAACQBQCdASogACsAPxl0sVEspqSqsAgBkCMJZAC2+4UEkCnHykdgmyuz7iwzzAKONsJtpQsYAAD+ivw3MSOpQ/o+KiUIkcJwl56RxDcnrw2wQ+BIbPKYGmYNlv5urQI+hSN9E0ICjQvZ+hqzhGDaxjnkAAA="
+  },
+  "arashiyama-bamboo": {
+    "width": 3200,
+    "height": 2136,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920,
+      2560
+    ],
+    "placeholder": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAAAQAwCdASogABUAPxl6slC6KCSisAgDQCMJZwDKACsw/wAA/u4eNNIGoz56ioXvw4iw3i4AAAA="
+  },
+  "fuji-lake": {
+    "width": 3200,
+    "height": 2078,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920,
+      2560
+    ],
+    "placeholder": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAwCdASogABUAPxl6slEsqCSnMAgBkCMJZQCuHA2Qnz1801ZydZy4AKcclWrFIqPoU2VL8XgyquqofAJ0FUeN79nE3Vp4QUN5+AmdIAA="
+  },
+  "fuji-pagoda": {
+    "width": 3840,
+    "height": 2560,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920,
+      2560,
+      3840
+    ],
+    "placeholder": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAABwAwCdASogABUAPwVsq1CvpiQit/qoAfAgiWMAuDAOqOMQ5QAA9wFBSbu2EOIWgagjNsQO5e1nCH0W+dbnSFH9qxd4PRDtnK7tHGL8AAA="
+  },
+  "gion-motion": {
+    "width": 3840,
+    "height": 5754,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920,
+      2560,
+      3840
+    ],
+    "placeholder": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAADQBACdASogADAAPxmAtlS/qDujJWzL8CMJYwDBkA9fkVJZBgcfe4V0NLg7CqYagAD+58+FThZFhXsFN+tw5pAIoPEklR37+N7cXrqkVTlBTr74kGxK8gwl0G0e56fVsHVq4/OH3AAAAA=="
+  },
+  "hakone-torii": {
+    "width": 3840,
+    "height": 2960,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920,
+      2560,
+      3840
+    ],
+    "placeholder": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADwAwCdASogABkAPxl4s1GxJySiqA1SICMJZQC/7ADqMUgLHfT+ENGAAOcwxJ8V2oVvpA6nQbFyiDHXROdCWeeB7Sr2u/7fIajEBobHgAA="
+  },
+  "itoshima-coast": {
+    "width": 3840,
+    "height": 5760,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920,
+      2560,
+      3840
+    ],
+    "placeholder": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAADQBACdASogADAAPxmAt1SsqDc5pWzLMCMJYwC9WEiQ9E5P/Wn+BGLwybEcJ01cAAD+7yNdUgFGCbGoZGMMvreO++sWg2dZQG+noKxOs02Bim57Yia2hm21FcMjM6g2GVl1ZDwVQAA="
+  },
+  "kyoto-garden": {
+    "width": 3840,
+    "height": 4800,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920,
+      2560,
+      3840
+    ],
+    "placeholder": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAADQBQCdASogACgAPxl6tFKsp6UipW5hkCMJYwDM0Ai0k/29XIoOvX6ppLHk80cZr4E+qLSx7iqgAP7ZWByrfybDjFiY7dVjatiU3aQrl/6u34ad1p8nFiPrBzXZRP4/peRSOB2ZRhCjxQAA"
+  },
+  "kyoto-sakura-lantern": {
+    "width": 3840,
+    "height": 2560,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920,
+      2560,
+      3840
+    ],
+    "placeholder": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAABQBQCdASogABUAPxl+tlQsqCUjMBgIAZAjCWMAwNw0cALiUrNIUX/wpSayY+xHza/rLgAA/ujPeYxTmyOFg9vE9yEyNH5jIE+4SvLuij8AAA=="
+  },
+  "kyoto-station": {
+    "width": 3200,
+    "height": 2000,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920,
+      2560
+    ],
+    "placeholder": "data:image/webp;base64,UklGRkQAAABXRUJQVlA4IDgAAADQAwCdASogABQAPxmAtFUsqCqjKAqpkCMJaQAALnVevetOrUaaigAA/svltsavP4LV9yCgtjgAAA=="
+  },
+  "kyoto-street": {
+    "width": 3200,
+    "height": 4800,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920,
+      2560
+    ],
+    "placeholder": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAwBgCdASogADAAPxl2r1Csv6QitVQIA/AjCUAXz30xf0F/G2ei679ec49dytlucJDQtR1eTIuHAQNAAP7jHisEjl8FkZOYj/z95PWE4JKh5m68h82nTxv72rJfYl3sqyKm2VRIlgAAAA=="
+  },
+  "kyoto-temple": {
+    "width": 3200,
+    "height": 2134,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920,
+      2560
+    ],
+    "placeholder": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAACwBACdASogABUAPxmItlWsqaSjKAqpkCMJQBmaDSv8cv64RO1Sel3zjBB4bylAAP75Saau7l6VIyJnyDc8B73ofXV6TRyF3xv6ATjASNwGfIAA"
+  },
+  "kyoto-torii": {
+    "width": 3200,
+    "height": 4795,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920,
+      2560
+    ],
+    "placeholder": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAADQBACdASogADAAPxF2rlCsLSQitVgIAaAiCWYAtRumgjeaNoF/7Bsiuocp3XMMOAD+4uT3Mqvr89KtYCn87Iy7KdsAn6GPRoi0HsVR6CvLnwQKltI6g3e4qEA7WeKPuOiDamZ7T43dd4u7ctDV9LCdT634AA=="
+  },
+  "naoshima-concrete": {
+    "width": 3840,
+    "height": 5760,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920,
+      2560,
+      3840
+    ],
+    "placeholder": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADwBACdASogADAAPwVurFCrpqQuNUgBwCCJZwDRRAG+2u2iFUcPfRG7QisYUPuFAAAA9ybD0o2UWE8xL2EYcCkOpB/miQv9sOuMhoF8wB9CftaebtLeXl8Z4AAAAA=="
+  },
+  "sapporo-konbini": {
+    "width": 3840,
+    "height": 2560,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920,
+      2560,
+      3840
+    ],
+    "placeholder": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAACQBACdASogABUAPw1srlCsJaQit/VYAYAhiWcAzNAQ8B/An2qCNDG+l89xmBAA/u55NfdDGdWCfrHnY8keHk0iO/jXX8kF9CPVeCN1vgAAAA=="
+  },
+  "shinjuku-umbrellas": {
+    "width": 3200,
+    "height": 4800,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920,
+      2560
+    ],
+    "placeholder": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAwBQCdASogADAAPvlqrlCqpiSitUwBUB8JZQC/7BAqvmz3dLrsseKXFEFVcCahzOS8QADZyiboePBiTEgLjnMFFsfZYGrd7l3/0zjm3jd91+ykMogv/XOyVMKYZ0stCc6lSDZlio5u5Lh4AAA="
+  },
+  "shinjuku-wet": {
+    "width": 3840,
+    "height": 2546,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920,
+      2560,
+      3840
+    ],
+    "placeholder": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAACQAwCdASogABUAPxl6tFIsp6UiqA1RkCMJYwAAO7ixxQSF49ooAP7pD8S4JEJGl/vAsPmCreXMmD0Phr5j9Fpjz0ONMlwAieXvpgLVqOMQAAAA"
+  },
+  "tokyo-aerial": {
+    "width": 3200,
+    "height": 2134,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920,
+      2560
+    ],
+    "placeholder": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAABQAwCdASogABUAPxl4tFI6JzArqA1TQCMJZQDBzBXzHrOEAAD+56nwRAr8cjkAxOswfkh5Soo02bxeXhGjWNuAAEGgAAAA"
+  },
+  "tokyo-familymart": {
+    "width": 3840,
+    "height": 2560,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920,
+      2560,
+      3840
+    ],
+    "placeholder": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQBACdASogABUAPxmEuVWsqKWjKAgBkCMJZQC7ABDeUPynz8bC+zyjXPhN4553iAD+6NvT96qtsJGgAwu4vZhLJ9ZnulZDOouSSmdPtK6Pc60/5wAAAA=="
+  },
+  "tokyo-platform": {
+    "width": 3200,
+    "height": 4800,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920,
+      2560
+    ],
+    "placeholder": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAACwBACdASogADAAPvFmp1CppiOiuqgBMB4JZwDLaEye2l4bIl6DHlqltpiEVNcQAP7vN56IQPve6WnQjrmkdC5ffSyviazOKNkAwLvBP2HiAyT6tZVC7eskhbzgAAAA"
+  },
+  "tokyo-rain": {
+    "width": 3200,
+    "height": 4800,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920,
+      2560
+    ],
+    "placeholder": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAABQBgCdASogADAAPxmAtlSsqDCjJWzKECMJQBOgAUrk8fcwOFWVCTyIBhi96N4A/Z1EZJ0GlKgN7gNeAAD+2UzwX2y9kLjetlgeCw5NQuSfx6YmlG6SVk12SFMZNm5c5M/a7WHybEsYL5m3tlTkExYN8ieab+tsKdhI4wlXAjr8AA=="
+  },
+  "tokyo-shibuya": {
+    "width": 3200,
+    "height": 2133,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920,
+      2560
+    ],
+    "placeholder": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAAAwAwCdASogABUAPxmGuVasqKWuKAgBwCMJZQDLpBaskJKAAP7vDlE/FwTabHDlcheDqhMzYDjXMKh4eAA="
+  },
+  "tokyo-tower": {
+    "width": 3840,
+    "height": 5760,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920,
+      2560,
+      3840
+    ],
+    "placeholder": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAAAQBgCdASogADAAPwVurFCrpqQitUgBcCCJZgC1Gw6D8h9p0eB3VfipFi/Gaz2ztlBB07tapFTPWAAA/uNKWN3objavScZ02d3DYQ+yGzVxz0gx4MR4FL5TcYwyfsq8Rxp0Vai1cppWmHCd93YYhE0OCOjeQx0Jqh6raFrcAAA="
+  },
+  "winter-forest": {
+    "width": 2984,
+    "height": 4477,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920,
+      2560
+    ],
+    "placeholder": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAwBQCdASogADAAPv1mo1CrJaMitUwBYB+JaQAAlrDP8pD00I1ggxrHUsZJePg1fQikAAD+2J6n/ys4tfUCnN5qt2lkR3u5/WSBDXmUUWpakMUfmZr6AAAA"
+  }
+}

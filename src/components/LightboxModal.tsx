@@ -19,14 +19,15 @@ import {
   MapPin,
   Clock,
   SlidersHorizontal,
-  Maximize2,
-  Minimize2,
-  Sparkles,
   Info,
 } from "lucide-react";
+import { ZenSymbol, FrameSymbol, CloseSymbol } from './LightboxSymbols';
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import type { Photo } from "@/data/photos";
+import { type Photo, getPhotoSrc } from "@/data/photos";
+import { photoSources } from "@/data/exhibition";
 import { cn } from "@/lib/utils";
+import { copy, type Locale } from '@/i18n/copy';
+import { localizeTag } from '@/i18n/photos';
 
 interface LightboxModalProps {
   open: boolean;
@@ -34,6 +35,7 @@ interface LightboxModalProps {
   photos: Photo[];
   currentId: string | null;
   storyTitle?: string;
+  locale: Locale;
   onNavigate: (delta: number) => void;
   onSelectPhoto: (id: string) => void;
 }
@@ -46,9 +48,11 @@ export function LightboxModal({
   photos,
   currentId,
   storyTitle,
+  locale,
   onNavigate,
   onSelectPhoto,
 }: LightboxModalProps) {
+  const c = copy[locale].lightbox;
   const current = photos.find((p) => p.id === currentId) || photos[0];
   const currentIndex = photos.findIndex((p) => p.id === currentId);
 
@@ -146,24 +150,19 @@ export function LightboxModal({
       if (["INPUT", "TEXTAREA"].includes((e.target as HTMLElement)?.tagName)) return;
 
       if (e.key === "Escape") {
-        if (isZenMode) {
-          setIsZenMode(false);
-          e.preventDefault();
-        } else if (showExifDrawer) {
-          setShowExifDrawer(false);
-          e.preventDefault();
-        } else {
-          onOpenChange(false);
-        }
+        onOpenChange(false);
       } else if (e.key === "ArrowRight") {
         e.preventDefault();
         onNavigate(1);
       } else if (e.key === "ArrowLeft") {
         e.preventDefault();
         onNavigate(-1);
-      } else if (e.key.toLowerCase() === "z" || e.key.toLowerCase() === "f") {
+      } else if (e.key.toLowerCase() === "z") {
         e.preventDefault();
         toggleZenMode();
+      } else if (e.key.toLowerCase() === "f") {
+        e.preventDefault();
+        void toggleFullscreen();
       } else if (e.key === "+" || e.key === "=") {
         e.preventDefault();
         handleZoomIn();
@@ -188,6 +187,7 @@ export function LightboxModal({
     onNavigate,
     onOpenChange,
     toggleZenMode,
+    toggleFullscreen,
     handleZoomIn,
     handleZoomOut,
     handleResetZoom,
@@ -299,7 +299,7 @@ export function LightboxModal({
             </span>
             <div className="hidden h-4 w-px bg-white/20 sm:block" />
             <span className="hidden text-xs uppercase tracking-widest text-neutral-400 sm:inline-block">
-              {storyTitle || "Arquivo Visual de Luxo"}
+              {storyTitle || c.visualArchive}
             </span>
           </div>
 
@@ -317,7 +317,7 @@ export function LightboxModal({
             {/* Toggle Painel EXIF */}
             <button
               onClick={() => setShowExifDrawer((prev) => !prev)}
-              aria-label="Alternar painel de metadados EXIF e história"
+              aria-label={c.details}
               aria-pressed={showExifDrawer}
               className={cn(
                 "group flex h-9 items-center gap-2 rounded-full border px-3 text-xs tracking-wider uppercase transition-all duration-200",
@@ -327,41 +327,38 @@ export function LightboxModal({
               )}
             >
               <SlidersHorizontal className="h-3.5 w-3.5 text-[#c8102e]" />
-              <span className="hidden sm:inline">EXIF & História</span>
+              <span className="hidden sm:inline">{c.metadata}</span>
             </button>
 
             {/* Toggle Modo Zen */}
             <button
               onClick={toggleZenMode}
-              aria-label="Ativar Modo Zen (contemplação sem distrações)"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-neutral-300 transition-all hover:border-white/30 hover:bg-white/10 hover:text-white"
-              title="Modo Zen (Atalho: Z)"
+              aria-label={c.zen}
+              aria-pressed={isZenMode}
+              className="hz-lightbox-control"
+              title={`${c.zenLabel} (Z)`}
             >
-              <Sparkles className="h-3.5 w-3.5" />
+              <ZenSymbol />
             </button>
 
             {/* Toggle Fullscreen */}
             <button
               onClick={toggleFullscreen}
-              aria-label={isFullscreen ? "Sair da Tela Cheia" : "Tela Cheia"}
-              className="hidden h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-neutral-300 transition-all hover:border-white/30 hover:bg-white/10 hover:text-white md:flex"
-              title="Tela Cheia (Atalho: F)"
+              aria-label={isFullscreen ? c.exitFullscreen : c.fullscreen}
+              className="hz-lightbox-control hz-lightbox-control--fullscreen"
+              title={`${isFullscreen ? c.exitFullscreen : c.fullscreen} (F)`}
             >
-              {isFullscreen ? (
-                <Minimize2 className="h-3.5 w-3.5" />
-              ) : (
-                <Maximize2 className="h-3.5 w-3.5" />
-              )}
+              <FrameSymbol inset={isFullscreen} />
             </button>
 
             {/* Botão Fechar */}
             <button
               onClick={() => onOpenChange(false)}
-              aria-label="Fechar fotografia"
-              className="ml-2 flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white transition-all hover:border-[#c8102e] hover:bg-[#c8102e]"
-              title="Fechar (Atalho: Esc)"
+              aria-label={c.close}
+              className="hz-lightbox-control hz-lightbox-control--close"
+              title={`${c.closeLabel} (Esc)`}
             >
-              <X className="h-4 w-4" />
+              <CloseSymbol />
             </button>
           </div>
         </header>
@@ -373,10 +370,10 @@ export function LightboxModal({
             <button
               onClick={() => setIsZenMode(false)}
               className="absolute top-6 right-6 z-50 flex items-center gap-2 rounded-full border border-white/20 bg-black/60 px-4 py-2 text-xs tracking-widest uppercase text-white/80 backdrop-blur-md transition-all hover:bg-white hover:text-black"
-              aria-label="Sair do Modo Zen"
+              aria-label={c.exitZen}
             >
-              <Minimize2 className="h-3.5 w-3.5" />
-              <span>Sair do Modo Zen (Z)</span>
+              <ZenSymbol className="h-4 w-4" />
+              <span>{c.exitZen} (Z)</span>
             </button>
           )}
 
@@ -408,7 +405,7 @@ export function LightboxModal({
                   onNavigate(-1);
                 }}
                 className="absolute left-4 z-30 flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-neutral-900/60 text-white/90 backdrop-blur-md transition-all hover:scale-105 hover:border-white/30 hover:bg-neutral-800"
-                aria-label="Fotografia anterior (Seta esquerda)"
+                aria-label={c.previous}
               >
                 <ArrowLeft className="h-5 w-5" />
               </button>
@@ -427,18 +424,19 @@ export function LightboxModal({
                   willChange: "transform",
                 }}
               >
-                <img
-                  ref={imageRef}
-                  key={current.id}
-                  src={"/photos/" + current.id + ".png"}
-                  alt={current.title}
-                  decoding="async"
-                  draggable={false}
-                  className="max-h-[82dvh] max-w-[88vw] object-contain shadow-2xl transition-all duration-300 select-none"
-                  style={{
-                    filter: "drop-shadow(0 20px 50px rgba(0,0,0,0.85))",
-                  }}
-                />
+                <picture key={current.id}>
+                  {photoSources(current).avif && <source type="image/avif" srcSet={photoSources(current).avif} sizes="(max-width: 760px) 100vw, 90vw" />}
+                  {photoSources(current).webp && <source type="image/webp" srcSet={photoSources(current).webp} sizes="(max-width: 760px) 100vw, 90vw" />}
+                  <img
+                    ref={imageRef}
+                    src={getPhotoSrc(current)}
+                    alt={current.alt || current.title}
+                    decoding="async"
+                    draggable={false}
+                    className="max-h-[82dvh] max-w-[88vw] object-contain shadow-2xl transition-all duration-300 select-none"
+                    style={{ filter: "drop-shadow(0 20px 50px rgba(0,0,0,0.85))" }}
+                  />
+                </picture>
               </div>
             </div>
 
@@ -450,7 +448,7 @@ export function LightboxModal({
                   onNavigate(1);
                 }}
                 className="absolute right-4 z-30 flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-neutral-900/60 text-white/90 backdrop-blur-md transition-all hover:scale-105 hover:border-white/30 hover:bg-neutral-800"
-                aria-label="Próxima fotografia (Seta direita)"
+                aria-label={c.next}
               >
                 <ArrowRight className="h-5 w-5" />
               </button>
@@ -462,7 +460,7 @@ export function LightboxModal({
                 <button
                   onClick={handleZoomOut}
                   disabled={zoomLevel <= 1}
-                  aria-label="Reduzir zoom (-)"
+                  aria-label={c.zoomOut}
                   className="flex h-7 w-7 items-center justify-center rounded-full text-neutral-300 transition-colors hover:bg-white/15 hover:text-white disabled:opacity-40"
                 >
                   <ZoomOut className="h-3.5 w-3.5" />
@@ -491,7 +489,7 @@ export function LightboxModal({
                 <button
                   onClick={handleZoomIn}
                   disabled={zoomLevel >= 3}
-                  aria-label="Ampliar zoom (+)"
+                  aria-label={c.zoomIn}
                   className="flex h-7 w-7 items-center justify-center rounded-full text-neutral-300 transition-colors hover:bg-white/15 hover:text-white disabled:opacity-40"
                 >
                   <ZoomIn className="h-3.5 w-3.5" />
@@ -502,8 +500,8 @@ export function LightboxModal({
                     <div className="h-3.5 w-px bg-white/20" />
                     <button
                       onClick={handleResetZoom}
-                      aria-label="Resetar zoom (0)"
-                      title="Resetar Zoom"
+                      aria-label={c.zoomReset}
+                      title={c.zoomReset}
                       className="flex h-7 w-7 items-center justify-center rounded-full text-neutral-300 transition-colors hover:bg-white/15 hover:text-white"
                     >
                       <RotateCcw className="h-3 w-3" />
@@ -525,12 +523,12 @@ export function LightboxModal({
             <div className="flex h-16 shrink-0 items-center justify-between border-b border-white/10 px-6">
               <div className="flex items-center gap-2">
                 <SlidersHorizontal className="h-4 w-4 text-[#c8102e]" />
-                <h3 className="font-serif text-lg tracking-wide text-white">Metadados & História</h3>
+                <h3 className="font-serif text-lg tracking-wide text-white">{c.metadata}</h3>
               </div>
               <button
                 onClick={() => setShowExifDrawer(false)}
                 className="flex h-8 w-8 items-center justify-center rounded-full text-neutral-400 hover:bg-white/10 hover:text-white"
-                aria-label="Fechar painel de metadados"
+                aria-label={c.panel}
               >
                 <X className="h-4 w-4" />
               </button>
@@ -561,68 +559,70 @@ export function LightboxModal({
                 <div className="mb-3 flex items-center justify-between">
                   <span className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-neutral-300">
                     <Camera className="h-3.5 w-3.5 text-[#c8102e]" />
-                    Ficha Técnica do Clique
+                    {c.sheet}
                   </span>
                   <span className="rounded bg-white/10 px-1.5 py-0.5 text-[10px] font-mono text-neutral-400">
-                    EXIF 35mm
+                    {c.archive}
                   </span>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3 text-xs">
-                  <div className="rounded-lg bg-neutral-900/60 p-2.5 border border-white/5">
+                  {current.exif.camera !== 'Não informado' && <div className="rounded-lg bg-neutral-900/60 p-2.5 border border-white/5">
                     <span className="text-[10px] uppercase tracking-wider text-neutral-500 block">
-                      Câmera
+                      {c.camera}
                     </span>
                     <span className="font-medium text-neutral-200 block truncate" title={current.exif.camera}>
                       {current.exif.camera}
                     </span>
-                  </div>
+                  </div>}
 
-                  <div className="rounded-lg bg-neutral-900/60 p-2.5 border border-white/5">
+                  {current.exif.lens !== 'Não informado' && <div className="rounded-lg bg-neutral-900/60 p-2.5 border border-white/5">
                     <span className="text-[10px] uppercase tracking-wider text-neutral-500 block">
-                      Lente
+                      {c.lens}
                     </span>
                     <span className="font-medium text-neutral-200 block truncate" title={current.exif.lens}>
                       {current.exif.lens}
                     </span>
-                  </div>
+                  </div>}
 
-                  <div className="rounded-lg bg-neutral-900/60 p-2.5 border border-white/5">
+                  {current.exif.aperture !== '—' && <div className="rounded-lg bg-neutral-900/60 p-2.5 border border-white/5">
                     <span className="text-[10px] uppercase tracking-wider text-neutral-500 block">
-                      Abertura
+                      {c.aperture}
                     </span>
                     <span className="font-mono font-medium text-white block">
                       {current.exif.aperture}
                     </span>
-                  </div>
+                  </div>}
 
-                  <div className="rounded-lg bg-neutral-900/60 p-2.5 border border-white/5">
+                  {current.exif.shutter !== '—' && <div className="rounded-lg bg-neutral-900/60 p-2.5 border border-white/5">
                     <span className="text-[10px] uppercase tracking-wider text-neutral-500 block">
-                      Obturador
+                      {c.shutter}
                     </span>
                     <span className="font-mono font-medium text-white block">
                       {current.exif.shutter}
                     </span>
-                  </div>
+                  </div>}
 
-                  <div className="rounded-lg bg-neutral-900/60 p-2.5 border border-white/5">
+                  {current.exif.iso !== '—' && <div className="rounded-lg bg-neutral-900/60 p-2.5 border border-white/5">
                     <span className="text-[10px] uppercase tracking-wider text-neutral-500 block">
-                      Sensibilidade ISO
+                      {c.iso}
                     </span>
                     <span className="font-mono font-medium text-white block">
                       ISO {current.exif.iso}
                     </span>
-                  </div>
+                  </div>}
 
-                  <div className="rounded-lg bg-neutral-900/60 p-2.5 border border-white/5">
+                  {current.exif.focalLength !== '—' && <div className="rounded-lg bg-neutral-900/60 p-2.5 border border-white/5">
                     <span className="text-[10px] uppercase tracking-wider text-neutral-500 block">
-                      Distância Focal
+                      {c.focal}
                     </span>
                     <span className="font-mono font-medium text-white block">
                       {current.exif.focalLength}
                     </span>
-                  </div>
+                  </div>}
                 </div>
+
+                {current.credit && <p className="mt-4 text-xs text-neutral-300">{c.credit}: <a className="underline underline-offset-4 hover:text-white" href={current.sourceUrl} target="_blank" rel="noopener noreferrer">{current.credit} / Unsplash</a> · {c.published} {current.exif.year}</p>}
 
                 {/* Localização & Coordenadas */}
                 <div className="mt-3 rounded-lg bg-neutral-900/60 p-3 border border-white/5 space-y-1">
@@ -630,9 +630,7 @@ export function LightboxModal({
                     <MapPin className="h-3 w-3 text-[#c8102e]" />
                     <span className="truncate">{current.exif.locationExact}</span>
                   </div>
-                  <div className="text-[10px] font-mono text-neutral-500 pl-4.5">
-                    {current.exif.coordinates}
-                  </div>
+                  {current.exif.coordinates !== '—' && <div className="text-[10px] font-mono text-neutral-500 pl-4.5">{current.exif.coordinates}</div>}
                 </div>
               </div>
 
@@ -640,7 +638,7 @@ export function LightboxModal({
               <div className="space-y-2">
                 <span className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-neutral-300">
                   <Info className="h-3.5 w-3.5 text-[#c8102e]" />
-                  História & Bastidores
+                  {c.context}
                 </span>
                 <p className="text-xs leading-relaxed text-neutral-300/90 font-light border-l-2 border-[#c8102e]/60 pl-3 py-1 italic bg-white/[0.01]">
                   "{current.story}"
@@ -650,7 +648,7 @@ export function LightboxModal({
               {/* Tags */}
               <div className="space-y-2">
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-neutral-400 block">
-                  Categorias
+                  {c.categories}
                 </span>
                 <div className="flex flex-wrap gap-1.5">
                   {current.tags.map((tag) => (
@@ -658,7 +656,7 @@ export function LightboxModal({
                       key={tag}
                       className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] text-neutral-300"
                     >
-                      {tag}
+                      {localizeTag(tag, locale)}
                     </span>
                   ))}
                 </div>
@@ -667,7 +665,7 @@ export function LightboxModal({
               {/* Miniaturas de Acesso Rápido */}
               <div className="space-y-2 border-t border-white/10 pt-4">
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-neutral-400 block">
-                  Outras Fotos da Série
+                  {c.more}
                 </span>
                 <div className="grid grid-cols-4 gap-2">
                   {photos.map((p) => (
@@ -682,8 +680,9 @@ export function LightboxModal({
                       )}
                     >
                       <img
-                        src={"/photos/" + p.id + ".png"}
-                        alt={p.title}
+                        src={p.imageKey ? `/photos/optimized/${p.imageKey}-480.webp` : getPhotoSrc(p)}
+                        alt={p.alt || p.title}
+                        loading="lazy"
                         className="h-full w-full object-cover"
                       />
                     </button>
@@ -708,7 +707,7 @@ export function LightboxModal({
             </span>
             <span className="hidden text-neutral-600 sm:inline">·</span>
             <span className="hidden text-neutral-400 sm:inline truncate">
-              {current.exif.camera} · {current.exif.aperture} · {current.exif.shutter}
+              {current.imageKey ? `${current.credit} · ${current.exif.year}` : `${current.exif.camera} · ${current.exif.aperture} · ${current.exif.shutter}`}
             </span>
           </div>
 
@@ -721,14 +720,14 @@ export function LightboxModal({
               <kbd className="rounded border border-white/20 bg-white/5 px-1.5 py-0.5 font-mono text-[10px]">
                 →
               </kbd>
-              <span>Navegar</span>
+              <span>{c.navigate}</span>
             </span>
             <span className="text-white/20">|</span>
             <span className="flex items-center gap-1.5">
               <kbd className="rounded border border-white/20 bg-white/5 px-1.5 py-0.5 font-mono text-[10px]">
                 Z
               </kbd>
-              <span>Modo Zen</span>
+              <span>{c.zenLabel}</span>
             </span>
             <span className="text-white/20">|</span>
             <span className="flex items-center gap-1.5">
@@ -742,7 +741,7 @@ export function LightboxModal({
               <kbd className="rounded border border-white/20 bg-white/5 px-1.5 py-0.5 font-mono text-[10px]">
                 Esc
               </kbd>
-              <span>Fechar</span>
+              <span>{c.closeLabel}</span>
             </span>
           </div>
 

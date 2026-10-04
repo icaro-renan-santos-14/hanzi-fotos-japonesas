@@ -15,6 +15,10 @@ interface OptimizedImageProps {
   height?: number | string;
   objectPosition?: string;
   showVignette?: boolean;
+  avifSrcSet?: string;
+  webpSrcSet?: string;
+  sizes?: string;
+  placeholder?: string;
 }
 
 export function OptimizedImage({
@@ -31,6 +35,10 @@ export function OptimizedImage({
   height,
   objectPosition,
   showVignette = true,
+  avifSrcSet,
+  webpSrcSet,
+  sizes,
+  placeholder,
 }: OptimizedImageProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -49,6 +57,7 @@ export function OptimizedImage({
       )}
       style={{
         ...(aspectRatio ? { aspectRatio: String(aspectRatio) } : {}),
+        ...(placeholder ? { backgroundImage: `url("${placeholder}")`, backgroundSize: 'cover', backgroundPosition: objectPosition || 'center' } : {}),
         ...style,
       }}
     >
@@ -63,6 +72,9 @@ export function OptimizedImage({
       </div>
 
       {/* Tag de Imagem com efeito Blur-up suave */}
+      <picture>
+        {avifSrcSet && <source type="image/avif" srcSet={avifSrcSet} sizes={sizes} />}
+        {webpSrcSet && <source type="image/webp" srcSet={webpSrcSet} sizes={sizes} />}
       <img
         ref={imgRef}
         src={src}
@@ -70,6 +82,7 @@ export function OptimizedImage({
         loading={loading}
         decoding={decoding}
         fetchPriority={fetchPriority}
+        sizes={sizes}
         width={width}
         height={height}
         onLoad={() => setIsLoaded(true)}
@@ -84,6 +97,7 @@ export function OptimizedImage({
           ...(objectPosition ? { objectPosition } : {}),
         }}
       />
+      </picture>
 
       {/* Camada sutil de vinheta escura para enriquecer a estética cinematográfica */}
       {showVignette && (
